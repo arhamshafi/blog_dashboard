@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.back {
+    background: linear-gradient(90deg, #38bdf8 0%, #f506a5 100%);
+}
+
+.tb_sh {
+    text-shadow: .1px .1px 1px black;
+}
+
+.no_spinner::-webkit-inner-spin-button,
+.no_spinner::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no_spinner {
+    -moz-appearance: textfield;
+}
