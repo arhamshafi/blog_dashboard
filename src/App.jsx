@@ -3,15 +3,18 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import Sign_up from './components/Sign_up'
 import Dashboard from './components/Dashboard'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className='back w-full min-h-screen flex justify-center items-center ' >
+    <div className='back w-full min-h-screen flex justify-center items-center select-none' >
       <Routes>
-        {/* <Route path='/' element={<Dashboard />} /> */}
-        {/* <Route path='/' element={<Login />} /> */}
-        <Route path='/' element={<Sign_up />} />
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/sign_up' element={<Sign_up />} />
       </Routes>
+       <ToastContainer position='top-center' autoClose={1500} />
     </div>
   )
 }

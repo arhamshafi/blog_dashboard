@@ -5,9 +5,11 @@ import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { TiContacts } from "react-icons/ti";
 import { App_context } from '../context';
+import { useNavigate } from 'react-router-dom';
 
 function Sign_up() {
   const { Sign_up_handler, sign_up_form, Sign_up } = useContext(App_context)
+  const navigate = useNavigate()
   return (
     <div className='w-[400px] h-[500px] rounded-xl bg-white relative select-none '>
       <h1 className='text-center text-black font-bold text-2xl tracking-[2px] tb_sh uppercase mt-10 '>Sign Up</h1>
@@ -33,7 +35,7 @@ function Sign_up() {
         </svg></button>
         <button className='hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer '><FaInstagram className='text-orange-600 w-[25px] h-[25px] ' /></button>
       </div>
-      <p className='hover:text-pink-600 mt-3 text-black/60 hover:underline text-sm cursor-pointer tracking-[-.6px] text-center'>Already Have Account ? Login</p>
+      <p className='hover:text-pink-600 mt-3 text-black/60 hover:underline text-sm cursor-pointer tracking-[-.6px] text-center' onClick={()=>navigate("/login")} >Already Have Account ? Login</p>
     </div>
   )
 }

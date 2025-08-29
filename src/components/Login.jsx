@@ -3,9 +3,11 @@ import { FaInstagram } from "react-icons/fa";
 import { TbLockPassword } from "react-icons/tb";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { App_context } from '../context';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const {  Login , login_form , Login_handler} = useContext(App_context)
+    const navigate = useNavigate()
     return (
         <div className='w-[400px] h-[400px] rounded-xl bg-white relative select-none '>
             <h1 className='text-center text-black font-bold text-2xl tracking-[2px] tb_sh uppercase mt-10 '>Login</h1>
@@ -28,7 +30,7 @@ function Login() {
                 </svg></button>
                 <button className='hover:-translate-y-1 transition-all duration-200 ease-in-out cursor-pointer '><FaInstagram className='text-orange-600 w-[25px] h-[25px] ' /></button>
             </div>
-            <p className='hover:text-cyan-600 mt-5 text-black/70 hover:underline cursor-pointer tracking-[-.5px] text-center'>Sign Up</p>
+            <p className='hover:text-cyan-600 mt-5 text-black/70 hover:underline cursor-pointer tracking-[-.5px] text-center' onClick={()=>navigate("/sign_up")}>Sign Up</p>
         </div>
     )
 }
