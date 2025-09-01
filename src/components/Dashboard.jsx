@@ -8,9 +8,10 @@ import { SiElasticcloud } from "react-icons/si";
 import { FaRegEye } from "react-icons/fa";
 import { VscPreview } from "react-icons/vsc";
 import Blog_form from './Blog_form';
+import Eye_ON_Post from './Eye_ON_Post';
 
 function Dashboard() {
-  const { active_user, set_Active_user, category, set_category, all_users, allblogs, latest_user, Log_out, set_Active_blog_form , Blog_post} = useContext(App_context)
+  const { active_user, set_Active_user, category, set_category, all_users, allblogs, latest_user, Log_out, set_Active_blog_form, Blog_post, Preview_post } = useContext(App_context)
   const navigate = useNavigate()
 
   const colorMap = {
@@ -33,6 +34,7 @@ function Dashboard() {
 
     <div className='w-full min-h-screen bg-white pb-10'>
       <Blog_form />
+      <Eye_ON_Post />
 
       <div className='w-full h-[70px] back flex items-center justify-between px-5 fixed top-0 left-0 z-20 '>
         <h1 className='text-white font-bold text-2xl tw_sh capitalize '>{active_user == null ? "Sign in ..." : `Welcome ${active_user}`}</h1>
@@ -58,7 +60,6 @@ function Dashboard() {
         </ul>
         <button className={`px-3 ${active_user ? "visible" : "invisible"} py-1 rounded-lg cx_sh cursor-pointer hover:scale-105 transition-all duration-200 ease-in active:scale-98 bg-cyan-400 text-white font-bold flex justify-center items-center gap-1`} onClick={() => set_Active_blog_form(true)} > <FaPlus className='scale-80' /> New</button>
       </div>
-
       <div className='w-full h-[100px] flex justify-evenly items-center mt-10 '>
         {
           [
@@ -84,10 +85,8 @@ function Dashboard() {
           })
         }
       </div>
-
       <h1 className='text-5xl ml-10 mt-10 text-black font-bold '>Blogs</h1>
       <div className='w-full h-max mt-5 px-10 flex justify-evenly flex-wrap items-center  '>
-
         {
           Blog_post?.length == 0 ? (<p className='text-gray-500 tb_sh mt-20 text-2xl font-bold text-center '>No Blogs Posted Here... </p>) :
             (
@@ -101,7 +100,7 @@ function Dashboard() {
                         <div className='w-max h-max ml-2  capitalize '> {ele.user} </div>
                       </div>
                       <div className='w-[70px] flex justify-center items-center gap-2.5 h-full'>
-                        <button className='w-[25px] h-[25px] flex justify-center cursor-pointer hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-sm back '><FaRegEye /></button>
+                        <button className='w-[25px] h-[25px] flex justify-center cursor-pointer hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-sm back ' onClick={() => Preview_post(ele)} ><FaRegEye /></button>
                         <button className='w-[25px] h-[25px] flex justify-center cursor-pointer hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-sm back '><VscPreview /></button>
                       </div>
                     </div>
@@ -116,13 +115,7 @@ function Dashboard() {
               })
             )
         }
-
-
-
-
-
       </div>
-
     </div>
   )
 }

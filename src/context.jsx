@@ -19,6 +19,8 @@ const App_provider = ({ children }) => {
     const [Blog_post, setBlog_post] = useState(null)
     const navigate = useNavigate()
     const token = sessionStorage.getItem("token") ? JSON.parse(sessionStorage.getItem("token")) : null
+    const [pr_post, setpr_post] = useState(false)
+    const [prev_post, setprev_post] = useState(null)
 
     //========================= HANDLER ============================ //
     const Login_handler = (e) => {
@@ -40,7 +42,6 @@ const App_provider = ({ children }) => {
         try {
 
             const res = await axios.post("http://localhost:8080/blog/create_blogs", blog_form, { headers: { Authorization: `Bearer ${token}` } })
-            console.log(res.data);
             toast.success(res.data.msg)
             set_blog_form({ img_url: "", des: "" })
             posted_blogs()
@@ -121,6 +122,12 @@ const App_provider = ({ children }) => {
         })
         setlatest_user(res.data.last_register)
     }
+    //=================== PREVIEW ===================//
+
+    const Preview_post =  (post) => {
+        setprev_post(post)
+        setpr_post(true)
+    }
 
     //=================== LOG OUT ======================//
 
@@ -146,7 +153,7 @@ const App_provider = ({ children }) => {
         <App_context.Provider value={{
             login_form, sign_up_form, Sign_up, Login, Login_handler, Sign_up_handler, active_user, set_Active_user, blog_form_setup, create_blog,
             category, set_category, all_users, allblogs, latest_user, Log_out, blog_form, set_blog_form, active_blog_form, set_Active_blog_form,
-            Blog_post
+            Blog_post, Preview_post, pr_post, setpr_post , prev_post
         }} >
             {children}
         </App_context.Provider>
