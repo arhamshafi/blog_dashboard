@@ -5,6 +5,7 @@ import Sign_up from './components/Sign_up'
 import Dashboard from './components/Dashboard'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Profile_blogs from './components/Profile_blogs'
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
         <Route path='/' element={<Dashboard />} />
         <Route path='/login' element={<Login />} />
         <Route path='/sign_up' element={<Sign_up />} />
+        <Route path='/Profile_user' element={<Profile_blogs />} />
       </Routes>
-       <ToastContainer position='top-center' autoClose={1500} />
+      <ToastContainer position='top-center' autoClose={1500} />
     </div>
   )
 }

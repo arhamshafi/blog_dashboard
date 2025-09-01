@@ -21,6 +21,7 @@ const App_provider = ({ children }) => {
     const token = sessionStorage.getItem("token") ? JSON.parse(sessionStorage.getItem("token")) : null
     const [pr_post, setpr_post] = useState(false)
     const [prev_post, setprev_post] = useState(null)
+    const [profile_blogs, set_profile_blogs] = useState()
 
     //========================= HANDLER ============================ //
     const Login_handler = (e) => {
@@ -53,6 +54,24 @@ const App_provider = ({ children }) => {
         }
 
     }
+    //=============================== fetch_user_post ==========================//
+
+    const fetch_user_post = async (id) => {
+        try {
+            const res = await axios.post("http://localhost:8080/blog/fetch_user_post", { id }, { headers: { Authorization: `Bearer ${token}` } })
+            toast.success(res.data.msg)
+            sessionStorage.setItem("profile_user" , JSON.stringify(res.data.user_blogs))
+            setTimeout(()=>{
+                navigate("/profile_user")
+            },1500)
+
+        }
+        catch (err) {
+            toast.error("Sign in Your Account ")
+        }
+
+    }
+
     // ======================================= AUTHENTICATION ============================== //
     const Sign_up = async () => {
         try {
@@ -124,7 +143,7 @@ const App_provider = ({ children }) => {
     }
     //=================== PREVIEW ===================//
 
-    const Preview_post =  (post) => {
+    const Preview_post = (post) => {
         setprev_post(post)
         setpr_post(true)
     }
@@ -153,7 +172,7 @@ const App_provider = ({ children }) => {
         <App_context.Provider value={{
             login_form, sign_up_form, Sign_up, Login, Login_handler, Sign_up_handler, active_user, set_Active_user, blog_form_setup, create_blog,
             category, set_category, all_users, allblogs, latest_user, Log_out, blog_form, set_blog_form, active_blog_form, set_Active_blog_form,
-            Blog_post, Preview_post, pr_post, setpr_post , prev_post
+            Blog_post, Preview_post, pr_post, setpr_post, prev_post, fetch_user_post , profile_blogs 
         }} >
             {children}
         </App_context.Provider>

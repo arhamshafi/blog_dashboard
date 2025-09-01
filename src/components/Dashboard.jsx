@@ -11,7 +11,7 @@ import Blog_form from './Blog_form';
 import Eye_ON_Post from './Eye_ON_Post';
 
 function Dashboard() {
-  const { active_user, set_Active_user, category, set_category, all_users, allblogs, latest_user, Log_out, set_Active_blog_form, Blog_post, Preview_post } = useContext(App_context)
+  const { active_user, set_Active_user, category, set_category, all_users, allblogs, latest_user, Log_out, set_Active_blog_form, Blog_post, Preview_post, fetch_user_post } = useContext(App_context)
   const navigate = useNavigate()
 
   const colorMap = {
@@ -91,17 +91,18 @@ function Dashboard() {
           Blog_post?.length == 0 ? (<p className='text-gray-500 tb_sh mt-20 text-2xl font-bold text-center '>No Blogs Posted Here... </p>) :
             (
               Blog_post?.map((ele, idx) => {
+
                 return (
                   <div key={idx} className='w-[400px] mt-5 min-h-[300px] px-3 pt-3 pb-5 bg-[whiteSmoke] gx_sh rounded-xl'>
                     <div className='w-full h-[60px] flex justify-between items-center'>
 
                       <div className='w-[300px] h-full flex items-center '>
-                        <div className='w-[50px] h-[50px] gx_sh overflow-hidden rounded-full '> <img src="/admin.jpg" className='w-full h-full ' alt="" /> </div>
+                        <div className='w-[50px] h-[50px] gx_sh overflow-hidden rounded-full hover:scale-105 cursor-pointer transition-all duration-200 ease-in-out ' onClick={() => fetch_user_post(ele.userid)}  > <img src="/admin.jpg" className='w-full h-full ' alt="" /> </div>
                         <div className='w-max h-max ml-2  capitalize '> {ele.user} </div>
                       </div>
                       <div className='w-[70px] flex justify-center items-center gap-2.5 h-full'>
                         <button className='w-[25px] h-[25px] flex justify-center cursor-pointer hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-sm back ' onClick={() => Preview_post(ele)} ><FaRegEye /></button>
-                        <button className='w-[25px] h-[25px] flex justify-center cursor-pointer hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-sm back '><VscPreview /></button>
+                        <button className='w-[25px] h-[25px] flex justify-center cursor-pointer hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-sm back ' onClick={() => fetch_user_post(ele.userid)} ><VscPreview /></button>
                       </div>
                     </div>
 

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { VscPreview } from "react-icons/vsc";
 import { App_context } from '../context';
 import { FaXmark } from "react-icons/fa6";
 
@@ -16,7 +15,6 @@ function Eye_ON_Post() {
                     </div>
                     <div className='w-[120px] flex justify-center items-center gap-2.5 h-full'>
                         <button className='w-[35px] h-[35px] flex justify-center cursor-pointer text-2xl hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-lg back ' onClick={() => setpr_post(false)} ><FaXmark /></button>
-                        <button className='w-[35px] h-[35px] flex justify-center cursor-pointer text-2xl hover:scale-105 hover:rotate-4 transition-all duration-200 ease-in-out active:scale-100 db_shade items-center text-white rounded-lg back '><VscPreview /></button>
                     </div>
                 </div>
 
