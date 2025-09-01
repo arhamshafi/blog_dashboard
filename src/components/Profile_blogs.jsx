@@ -9,8 +9,6 @@ function Profile_blogs() {
     const { Preview_post } = useContext(App_context)
     const user_profile = sessionStorage.getItem("profile_user") ? JSON.parse(sessionStorage.getItem("profile_user")) : null
     const navigate = useNavigate()
-    // console.log(user_profile);
-
 
     return (
         <div className='w-full min-h-screen bg-white pt-[70px] pb-10 '>
@@ -25,8 +23,7 @@ function Profile_blogs() {
                         }, 1000);
                     }}
                 >
-                    <FaAngleLeft className='text-2xl' /> Back
-                </button></div>
+                    <FaAngleLeft className='text-2xl' />Back</button></div>
             <div className='w-full h-max flex items-center px-10  pt-5 pb-5 bg-[whiteSmoke] '>
                 <div className='w-[200px] h-[200px] rounded-full gx_sh overflow-hidden '> <img src="/admin.jpg" className='w-full h-full' alt="" /> </div>
                 <div className=' tracking-[2px] capitalize ml-10 '>
@@ -61,8 +58,6 @@ function Profile_blogs() {
                     })
                 }
             </div>
-
-
         </div>
     )
 }

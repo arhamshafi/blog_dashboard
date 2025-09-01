@@ -35,7 +35,6 @@ function Dashboard() {
     <div className='w-full min-h-screen bg-white pb-10'>
       <Blog_form />
       <Eye_ON_Post />
-
       <div className='w-full h-[70px] back flex items-center justify-between px-5 fixed top-0 left-0 z-20 '>
         <h1 className='text-white font-bold text-2xl tw_sh capitalize '>{active_user == null ? "Sign in ..." : `Welcome ${active_user}`}</h1>
         <h1 className='text-3xl text-white font-bold fixed w-full text-center tw_sh '>Blog App</h1>
