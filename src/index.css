@@ -7,6 +7,7 @@
 .back {
     background: linear-gradient(90deg, #38bdf8 0%, #f506a5 100%);
 }
+
 .side {
     background: linear-gradient(180deg, #38bdf8 0%, #f506a5 100%);
 }
@@ -14,20 +15,33 @@
 .tb_sh {
     text-shadow: .1px .1px 1px black;
 }
-.tw_sh{
+
+.tw_sh {
     text-shadow: .1px .1px 2px white;
 }
-.tp_sh{
+
+.tp_sh {
     text-shadow: .1px .1px 2px #f506a5;
 }
-.bx_sh{
+
+.bx_sh {
     box-shadow: .1px .1px 3px 0px black;
 }
-.wx_sh{
+
+.gx_sh {
+    box-shadow: 0.1px 0.1px 5px 0px rgb(155, 155, 155);
+}
+
+.wx_sh {
     box-shadow: .1px .1px 3px 0px white;
 }
-.cx_sh{
+
+.cx_sh {
     box-shadow: .1px .1px 3px 0px #38bdf8;
+}
+
+.db_shade {
+    box-shadow: 0 0 4px #38bdf8, 0 0 4px #f506a5
 }
 
 
@@ -39,4 +53,14 @@
 
 .no_spinner {
     -moz-appearance: textfield;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    box-shadow: 0 0 6px #38bdf8, 0 0 6px #f506a5
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #38bdf8, #f506a5);
+    border-radius: 10px;
 }
